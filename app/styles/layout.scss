@@ -1,0 +1,77 @@
+@import "lib/_scut.scss";
+@import "lib/_own.scss";
+@import "project/_projectVariables.scss";
+
+html, body {
+	font-size:1rem;
+}
+
+html {
+	min-height:100%;
+	position:relative;
+}
+
+body {
+	margin-bottom:scut-rem($footerHeight);//altura del footer
+}
+
+.navbar.navbar-default
+{
+	background-color:$menuBgColor;
+	border:none;
+	border-bottom:scut-rem(2) solid $menuAHoverColor;
+	@include border-radius(0);
+	a, li > a {
+		color:$menuAColor;
+		&:focus {
+			color:$menuAColor;
+		}
+		&:hover {
+			color:$menuAHoverColor;
+			&:focus {
+				color:$menuAHoverColor;
+			}
+		}
+	}
+	li.active {
+		a, a:hover, a:focus {
+			background-color:$menuAHoverColor;
+			color:$menuBgColor;
+		}
+		
+	}
+	
+}
+
+header.header, footer.footer {
+	border:0;
+}
+
+header.header {
+	padding-left:0;
+	padding-right:0;
+}
+
+
+footer, footer.footer {
+	width:100%;
+	height:scut-rem($footerHeight);
+	background-color:$menuBgColor;
+	border-top:scut-rem(2) solid $menuAHoverColor;
+	position:absolute;
+	bottom:0;
+	color:$menuAHoverColor;
+	small {
+		color:$footerSmallColor;
+	}
+}
+
+ul.nav.navbar-nav
+{
+	padding:0;
+	margin:scut-rem(0 -15);
+	@media(min-width:scut-rem(768))
+	{
+		margin:scut-rem(0);
+	}
+}
