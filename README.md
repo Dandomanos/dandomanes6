@@ -1,2 +1,2 @@
 # Yeoman
-Yeoman edited by Dandomanos
+Yeoman edited by Dandomanos(fonts, bower, style)
