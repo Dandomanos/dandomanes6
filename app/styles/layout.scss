@@ -75,3 +75,22 @@ ul.nav.navbar-nav
 		margin:scut-rem(0);
 	}
 }
+
+h2 {
+	margin-bottom:scut-rem(30);
+	width:100%;
+	border-bottom:scut-rem(1) solid $menuBgColor;
+	padding-bottom:scut-rem(10);
+}
+/* 	FORMS 	*/
+.error {
+	font-size:scut-rem(12);
+	margin-top:scut-rem(5);
+	color:$errorForm;
+}
+textarea
+{
+	min-height:scut-rem(200);
+	max-height:scut-rem(400);
+	max-width:100%;
+}

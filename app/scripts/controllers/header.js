@@ -9,7 +9,7 @@
  */
 angular.module('yoomanApp')
   .controller('HeaderCtrl',['$scope', '$location', 'data', function ($scope, $location, data) {
-  	$scope.path = $location.path();
+  	$scope.path = '/#'+$location.path();
     $scope.message = "Loading...";
   	$scope.menu = data.getMenu().query(
       function(success) {
@@ -25,7 +25,7 @@ angular.module('yoomanApp')
   	};
 
   	$scope.$on('$locationChangeSuccess', function() {
-  		$scope.path = $location.path();
+  		$scope.path = '/#'+$location.path();
   	});
     
   }]);

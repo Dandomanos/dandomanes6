@@ -12,6 +12,10 @@ angular.module('yoomanApp')
   .service('data', ['$resource', 'baseURL', function ($resource, baseURL) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     this.getMenu = function() {
-    	return $resource(baseURL +"menu", null, {'update': {method:'PUT'}});
+    	return $resource(baseURL + "menu", null, {'update': {method:'PUT'}});
+    };
+
+    this.getContact = function() {
+    	return $resource(baseURL + "contact", null, {'update': {method:'PUT'}});
     };
   }]);

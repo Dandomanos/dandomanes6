@@ -1,1 +1,55 @@
-<p>This is the contact view.</p>
+<h2>{{dataForm.title}}</h2>
+<div class="form-contact">
+	<form data-ng-submit="sendComment()" class="form-horizontal" name="contactForm" novalidate>
+
+		<!-- Name -->
+		<div class="form-group">
+			<label for="name" class="control-label col-md-3">{{dataForm.formName.label}}</label>
+			<div class="col-md-9">
+				<input type="text" name="name" id="name" class="form-control" placeholder="{{dataForm.formName.placeholder}}" data-ng-pattern="dataForm.formName.pattern" pattern="{{dataForm.formName.pattern}}" data-ng-model="data.name" required>
+			</div>
+		</div>
+
+		<!-- Phone Number -->
+		<div class="form-group" data-ng-class="{'has-error' : contactForm.phone.$error.pattern && contactForm.phone.$dirty}">
+			<label for="phone" class="control-label col-md-3">{{dataForm.formPhone.label}}</label>
+			<div class="col-md-9">
+				<input type="text" name="phone" id="phone" class="form-control" placeholder="{{dataForm.formPhone.placeholder}}" data-ng-pattern="dataForm.formPhone.pattern" pattern="{{dataForm.formPhone.pattern}}" data-ng-model="data.phone" required>
+				<div role="alert">
+					<p class="error" data-ng-show = "contactForm.phone.$error.pattern && contactForm.phone.$dirty">
+						{{dataForm.formPhone.errorText}}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Email -->
+		<div class="form-group" data-ng-class="{'has-error' : contactForm.email.$invalid && contactForm.email.$dirty}">
+			<label for="email" class="col-md-3 control-label">{{dataForm.formEmail.label}}</label>
+			<div class="col-md-9">
+				<input type="email" id="email" name="email" class="form-control" placeholder="{{dataForm.formEmail.placeholder}}" data-ng-model="data.email" required>
+				<div role="alert">
+					<p class="error" data-ng-show = "contactForm.email.$invalid && contactForm.email.$dirty">
+						{{dataForm.formEmail.errorText}}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Comment -->
+		<div class="form-group">
+			<label for="comment" class="col-md-3 control-label">{{dataForm.formComment.label}}</label>
+			<div class="col-md-9">
+				<textarea id="comment" name="comment" class="form-control" placeholder="{{dataForm.formComment.placeholder}}" data-ng-model="data.comment" required></textarea>
+			</div>
+		</div>
+
+		<!-- Actions Buttons -->
+		<div class="form-group">
+		<div class="col-xs-12">
+			<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="contactForm.$invalid">{{dataForm.action}}</button>
+		</div>
+	</div>
+	</form>
+</div>
+

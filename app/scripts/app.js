@@ -31,14 +31,14 @@ angular
     })
     .when('/contact', {
       templateUrl: 'views/contact.html',
-      controller: 'AboutCtrl',
-      controllerAs: 'about'
+      controller: 'ContactCtrl'
     })
     .otherwise({
       redirectTo: '/'
     });
 
-    $locationProvider.html5Mode({
-      enabled: true
-    });
+    // $locationProvider.html5Mode({
+    //   enabled: true,
+    //   requireBase: false
+    // });
   });

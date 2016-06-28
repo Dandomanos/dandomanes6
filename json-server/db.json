@@ -4,15 +4,44 @@
   [
     {
       "text": "Home",
-      "path": "/"
+      "path": "/#/"
     },
     {
       "text": "About",
-      "path": "/about"
+      "path": "/#/about"
     },
     {
       "text": "Contact",
-      "path": "/contact"
+      "path": "/#/contact"
     }
-  ]
+  ],
+  "contact":
+  {
+      "title": "Cuéntanos tus sugerencias",
+      "action": "Enviar",
+      "formName" :
+      {
+            "label" : "Nombre",
+            "placeholder" : "Introduce tu nombre",
+            "errorText" : "Debes introducir tu nombre"
+      },
+      "formPhone" :
+      {
+            "label" : "Teléfono",
+            "placeholder" : "Introduce tu número de teléfono",
+            "errorText" : "El número de teléfono debe tener 9 dígitos y comenzar por 6, 7 o 9",
+            "pattern" : "[9|6|7][0-9]{8}"
+      },
+      "formEmail" :
+      {
+            "label" : "Email",
+            "placeholder" : "Introduce tu correo electrónico",
+            "errorText" : "Debes introducir una dirección email válida"
+      },
+      "formComment" :
+      {
+            "label" : "Sugerencia",
+            "placeholder" : "Cuéntanos qué te preocupa"
+      }
+    }
 }
