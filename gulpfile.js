@@ -12,6 +12,7 @@ var browserSync = require('browser-sync');
 var imagemin = require('imagemin');
 var gutil = require('gulp-util');
 
+
 var yeoman = {
   app: require('./bower.json').appPath || 'app',
   dist: 'dist'

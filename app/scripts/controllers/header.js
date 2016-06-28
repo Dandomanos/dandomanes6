@@ -8,9 +8,16 @@
  * Controller of the yoomanApp
  */
 angular.module('yoomanApp')
-  .controller('HeaderCtrl',['$scope', '$location', function ($scope, $location) {
+  .controller('HeaderCtrl',['$scope', '$location', 'data', function ($scope, $location, data) {
   	$scope.path = $location.path();
-  	console.log($scope.path);
+    $scope.message = "Loading...";
+  	$scope.menu = data.getMenu().query(
+      function(success) {
+        $scope.menu = success;
+      },
+      function(error) {
+        $scope.message = "Error: " + error.status + " " + error.statusText;
+      });
   	
   	$scope.isActive = function(path)
   	{
