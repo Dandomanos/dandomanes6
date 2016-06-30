@@ -35,7 +35,14 @@
 				</div>
 			</div>
 		</div>
-
+		
+		<div class="form-group">
+			<label for="comment" class="col-md-3 control-label">{{dataForm.formRating.label}}</label>
+			<div class="col-md-9">
+				<div dando-rating rating-value="rating.rate" max="rating.max"></div>
+			</div>
+		</div>
+		
 		<!-- Comment -->
 		<div class="form-group">
 			<label for="comment" class="col-md-3 control-label">{{dataForm.formComment.label}}</label>
@@ -51,5 +58,32 @@
 		</div>
 	</div>
 	</form>
+</div>
+
+<!-- Media Rating -->
+<div class="score-container">
+	<span class="score">{{mediaRating | setDecimal:2}}</span>
+	<div class="rating-stars">
+		<div dando-rating rating-value="-1" max="rating.max" readonly="true" class="rating-container">
+		</div>
+		<div dando-rating rating-value="rating.max" max="rating.max" readonly="true" class="rating-calculated" style="width:{{mediaPercent}}%;">
+		</div>
+	</div>
+</div>
+
+<!-- Comments service -->
+<div class="comments">
+	<ul class="listComments row">
+		<li data-ng-repeat="comment in comments track by $index" class="col-xs-12">
+			<p>
+				<span class="comment-title">{{comment.name}}</span> [<small style="font-weight:bold;">{{comment.id}}</small>]<br />
+				<a href="mailto:{{comment.email}}">{{comment.email}}<br />
+				<a data-ng-href="tel:+{{comment.phone}}">{{comment.phone}}</a><br />
+				<span dando-rating rating-value="comment.rating" max="rating.max" readonly="true"></span>
+				<small>{{comment.comment}}</small>
+			</p>
+			<a ng-click="delete(comment.id, $index)">Borrar</a>
+		</li>
+	</ul>
 </div>
 

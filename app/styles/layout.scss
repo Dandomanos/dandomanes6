@@ -94,3 +94,86 @@ textarea
 	max-height:scut-rem(400);
 	max-width:100%;
 }
+ul.rating
+{
+	padding:0;
+	margin:0;
+	list-style:none;
+	li {
+		display:inline-block;
+		cursor:pointer;
+		margin:scut-rem(5);
+		i {
+			font-size:scut-rem(30);
+			color:#ccc;
+
+		}
+		&.active
+		{
+			i {
+				color:orange;
+			}
+		}
+		&.hovered
+		{
+			i {
+				color:red;
+			}
+		}
+	}
+}
+
+ul.listComments
+{
+	list-style:none;
+	padding:0 scut-rem(15);
+	li {
+		display :inline-block;
+		@include border-radius(scut-rem(5));
+		border:scut-rem(1) solid #ccc;
+		padding-top:scut-rem(10);
+		margin-bottom:scut-rem(15);
+		ul.rating
+		{
+			li {
+				border:none;
+				cursor:default;
+				margin:scut-rem(2);
+				padding:0;
+				i {
+					font-size:scut-rem(16);
+				}
+			}
+			
+		}
+	}
+}
+
+.score-container
+{
+	text-align:center;
+	.score {
+		font-size:scut-rem(60);
+	}
+	.rating-stars
+	{
+		margin:0 auto;
+		height:scut-rem(100);
+		width:scut-rem(190);
+		position:relative;
+		.rating-container, .rating-calculated
+		{
+			position:absolute;
+			height:scut-rem(40);
+			overflow:hidden;
+		}
+		ul.rating
+		{
+			li {
+				padding:scut-rem(5);
+				display: table-cell;
+				cursor:default;
+			}
+		}
+	}
+}

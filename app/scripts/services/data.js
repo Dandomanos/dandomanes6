@@ -18,4 +18,11 @@ angular.module('yoomanApp')
     this.getContact = function() {
     	return $resource(baseURL + "contact", null, {'update': {method:'PUT'}});
     };
+
+    this.getComments = function() {
+      return $resource(baseURL + "comments/:id", null, {'update': {method:'PUT'}});
+    };
+
+
+
   }]);

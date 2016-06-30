@@ -1,7 +1,6 @@
 {
   "feedback": [],
-  "menu":
-  [
+  "menu": [
     {
       "text": "Home",
       "path": "/#/"
@@ -15,33 +14,49 @@
       "path": "/#/contact"
     }
   ],
-  "contact":
-  {
-      "title": "Cuéntanos tus sugerencias",
-      "action": "Enviar",
-      "formName" :
-      {
-            "label" : "Nombre",
-            "placeholder" : "Introduce tu nombre",
-            "errorText" : "Debes introducir tu nombre"
-      },
-      "formPhone" :
-      {
-            "label" : "Teléfono",
-            "placeholder" : "Introduce tu número de teléfono",
-            "errorText" : "El número de teléfono debe tener 9 dígitos y comenzar por 6, 7 o 9",
-            "pattern" : "[9|6|7][0-9]{8}"
-      },
-      "formEmail" :
-      {
-            "label" : "Email",
-            "placeholder" : "Introduce tu correo electrónico",
-            "errorText" : "Debes introducir una dirección email válida"
-      },
-      "formComment" :
-      {
-            "label" : "Sugerencia",
-            "placeholder" : "Cuéntanos qué te preocupa"
-      }
+  "contact": {
+    "title": "Cuéntanos tus sugerencias",
+    "action": "Enviar",
+    "formName": {
+      "label": "Nombre",
+      "placeholder": "Introduce tu nombre",
+      "errorText": "Debes introducir tu nombre"
+    },
+    "formPhone": {
+      "label": "Teléfono",
+      "placeholder": "Introduce tu número de teléfono",
+      "errorText": "El número de teléfono debe tener 9 dígitos y comenzar por 6, 7 o 9",
+      "pattern": "[9|6|7][0-9]{8}"
+    },
+    "formEmail": {
+      "label": "Email",
+      "placeholder": "Introduce tu correo electrónico",
+      "errorText": "Debes introducir una dirección email válida"
+    },
+    "formComment": {
+      "label": "Sugerencia",
+      "placeholder": "Cuéntanos qué te preocupa"
+    },
+    "formRating": {
+      "label": "Puntuación"
     }
+  },
+  "comments": [
+    {
+      "name": "Jorge Lucas Blázquez",
+      "phone": 647518763,
+      "email": "dandomanos@gmail.com",
+      "comment": "asfsad fsadfsadfdsa",
+      "rating": 5,
+      "id": 1
+    },
+    {
+      "name": "macario",
+      "phone": 655788987,
+      "email": "macario@tuvieja.com",
+      "comment": "sadf asdf sadfasd",
+      "rating": 4,
+      "id": 3
+    }
+  ]
 }
