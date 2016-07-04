@@ -16,6 +16,12 @@ angular.module('yoomanApp')
     $scope.rating.max = 5;
     $scope.newPost = new data.getComments();
     $scope.mediaRating = 0;
+    $scope.formVisible = false;
+
+    $scope.toggleForm = function()
+    {
+        $scope.formVisible = !$scope.formVisible;
+    };
 
   	$scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
 
@@ -36,9 +42,10 @@ angular.module('yoomanApp')
       $scope.newPost.comment = $scope.data;
       data.getComments().save($scope.newPost.comment, function(data){
           console.log("comment update", data + " width id " + data.id);
+          $scope.formVisible = false;
           $scope.comments.push(data);
           $scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
-          $scope.contactForm.$setPristine();
+          // $scope.contactForm.$setPristine();
           $scope.calculateMedia();
       });
   	};
@@ -93,7 +100,8 @@ angular.module('yoomanApp')
           count += $scope.comments[i].rating;
        }
        $scope.mediaRating = count/$scope.comments.length;
-       $scope.mediaPercent = $scope.mediaRating/$scope.rating.rate*100;
+       $scope.mediaPercent = $scope.mediaRating/$scope.rating.max*100;
+       console.log("Media Rating", $scope.mediaRating);
        console.log("Percent Rating", $scope.mediaPercent);
        // console.log("Media rating", rating);
     };

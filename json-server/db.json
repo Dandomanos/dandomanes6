@@ -2,21 +2,22 @@
   "feedback": [],
   "menu": [
     {
-      "text": "Home",
+      "text": "Inicio",
       "path": "/#/"
     },
     {
-      "text": "About",
+      "text": "Conócenos",
       "path": "/#/about"
     },
     {
-      "text": "Contact",
+      "text": "Sugerencias",
       "path": "/#/contact"
     }
   ],
   "contact": {
     "title": "Cuéntanos tus sugerencias",
-    "action": "Enviar",
+    "actionSend": "Enviar",
+    "actionDelete": "Borrar comentario",
     "formName": {
       "label": "Nombre",
       "placeholder": "Introduce tu nombre",
@@ -43,20 +44,52 @@
   },
   "comments": [
     {
-      "name": "Jorge Lucas Blázquez",
-      "phone": 647518763,
-      "email": "dandomanos@gmail.com",
-      "comment": "asfsad fsadfsadfdsa",
+      "name": "Roger Wilco",
+      "phone": 678998789,
+      "email": "r.wilco@interestellar.com",
+      "comment": "no more monochrome people pls.",
       "rating": 5,
-      "id": 1
+      "id": 22
     },
     {
-      "name": "macario",
-      "phone": 655788987,
-      "email": "macario@tuvieja.com",
-      "comment": "sadf asdf sadfasd",
-      "rating": 4,
-      "id": 3
+      "name": "Guybrush Threepwood",
+      "phone": 645454545,
+      "email": "thegreatpirata@stanscompany.com",
+      "comment": "You fight like a cow!",
+      "rating": 5,
+      "id": 23
+    },
+    {
+      "name": "George Stobbart",
+      "phone": 645789878,
+      "email": "brokensword@gmail.com",
+      "comment": "i hate that templars",
+      "rating": 5,
+      "id": 24
+    },
+    {
+      "name": "Bernard Bernoulli",
+      "phone": 678964453,
+      "email": "dayofthenerd@tentacle.com",
+      "comment": "present, past or future?",
+      "rating": 1,
+      "id": 25
+    },
+    {
+      "name": "Larry Leisure",
+      "phone": 987895463,
+      "email": "larryleisure@xxx.com",
+      "comment": "so hot!",
+      "rating": 3,
+      "id": 26
+    },
+    {
+      "name": "Gabriel Knight",
+      "phone": 789456123,
+      "email": "g.knight@davinci.com",
+      "comment": "ey, i have a new email!",
+      "rating": 1,
+      "id": 27
     }
   ]
 }

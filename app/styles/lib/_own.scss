@@ -32,13 +32,34 @@ $breakpoints: ( "phone": 400px, "phone-wide": 480px, "phablet": 560px, "tablet-s
     }
 }
 
-/*   BORDER-RADIUS  */
+
 
 @mixin own-css3-prefix($property, $value) {
   -webkit-#{$property}: #{$value};
      -moz-#{$property}: #{$value};
+      -ms-#{$property}: #{$value};
           #{$property}: #{$value};
 }
+
+@mixin vendorAll($property, $value) {
+  -webkit-#{$property}: #{$value};
+     -moz-#{$property}: #{$value};
+      -ms-#{$property}: #{$value};
+       -o-#{$property}: #{$value};
+          #{$property}: #{$value};
+
+}
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+ 
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+/*   BORDER-RADIUS  */
 
 @mixin border-radius($radius: 5px) {
     @include own-css3-prefix('border-radius', $radius);

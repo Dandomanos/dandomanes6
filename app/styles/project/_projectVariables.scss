@@ -1,4 +1,6 @@
 //projectVariables
+@import "../lib/_scut.scss";
+@import "../lib/_own.scss";
 
 //		MENU COLORS  		//
 
@@ -13,3 +15,9 @@ $footerHeight:60;
 
 //Forms
 $errorForm:#a94442;
+$starActive:orange;
+$userColor:#264991;
+
+//General
+$borderColor:#ccc;
+$borde:scut-rem(1) solid $borderColor;

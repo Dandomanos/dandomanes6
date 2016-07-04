@@ -23,6 +23,4 @@ angular.module('yoomanApp')
       return $resource(baseURL + "comments/:id", null, {'update': {method:'PUT'}});
     };
 
-
-
   }]);

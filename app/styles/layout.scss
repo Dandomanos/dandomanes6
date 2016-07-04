@@ -105,23 +105,35 @@ ul.rating
 		margin:scut-rem(5);
 		i {
 			font-size:scut-rem(30);
-			color:#ccc;
+			color:$borderColor;
 
 		}
 		&.active
 		{
 			i {
-				color:orange;
-			}
-		}
-		&.hovered
-		{
-			i {
-				color:red;
+				color:$starActive;
 			}
 		}
 	}
 }
+
+@keyframes spin { 
+        from { 
+            transform: rotate(0deg); 
+        } to { 
+            transform: rotate(180deg); 
+            transform: translateZ(2);
+        }
+    }
+
+    @keyframes spinBack { 
+        from { 
+            transform: rotate(180deg); 
+            transform: translateZ(2);
+        } to { 
+            transform: rotate(0deg); 
+        }
+    }
 
 ul.listComments
 {
@@ -130,7 +142,7 @@ ul.listComments
 	li {
 		display :inline-block;
 		@include border-radius(scut-rem(5));
-		border:scut-rem(1) solid #ccc;
+		border:$borde;
 		padding-top:scut-rem(10);
 		margin-bottom:scut-rem(15);
 		ul.rating
@@ -140,18 +152,50 @@ ul.listComments
 				cursor:default;
 				margin:scut-rem(2);
 				padding:0;
+				position:relative;
 				i {
 					font-size:scut-rem(16);
 				}
 			}
 			
 		}
+		.close-button
+		{
+			position:absolute;
+			top:scut-rem(5);
+			right:scut-rem(5);
+			cursor:pointer;
+			@include own-css3-prefix(transition, all 0.3s ease);
+			i{
+				font-size:scut-rem(20);
+				color:darken($borderColor, 30);
+				@include own-css3-prefix(transition, all 0.3s ease);
+				@include own-css3-prefix(animation, spinBack 0.3s ease);
+				
+    			
+			}
+			&:hover
+			{
+				i {
+					@include own-css3-prefix(animation, spin 0.3s ease);
+					// transform: rotate(180deg); 
+					color:$errorForm;
+				}
+				transform:scale(1.2);
+			}
+			
+		}
 	}
+}
+
+.comments {
+	@include own-css3-prefix(transition, all 0.3s ease);
 }
 
 .score-container
 {
 	text-align:center;
+	@include own-css3-prefix(transition, all 0.3s ease);
 	.score {
 		font-size:scut-rem(60);
 	}
@@ -176,4 +220,72 @@ ul.listComments
 			}
 		}
 	}
+}
+
+.comment-author
+{
+	.comment-title 
+	{
+		font-weight:bold;
+		font-size:scut-rem(18);
+		color:$userColor;
+	}
+	a {
+		text-decoration:none;
+		color:darken($borderColor, 30);
+		// font-weight:bold;
+		font-size:scut-rem(14);
+	}
+	margin-bottom:scut-rem(5);
+}
+.comment-text
+{
+	text-align:center;
+	padding-right:scut-rem(5);
+	font-style:italic;
+}
+
+.form-contact, .listComments li, .score-container, .comments {
+	&.ng-enter
+	{
+		@include own-css3-prefix(transition, all 0.3s ease);
+		opacity:0;
+		transform:scaleY(0);
+
+		&.ng-enter-active
+		{
+			opacity:1;
+			transform:scaleY(1);
+		}
+		transform-origin: 0% 0%;
+	}
+	&.ng-leave
+	{
+		opacity:1;
+		transform:scaleY(1);
+		@include own-css3-prefix(transition, all 0.3s ease);
+		&.ng-leave-active
+		{
+			opacity:0;
+			transform:scaleY(0);
+		}
+		transform-origin: 0% 0%;
+
+	}
+}
+
+a.display-panel
+{
+		width:100%;
+		display:block;
+		position:relative;
+		cursor:pointer;
+		text-decoration:none;
+		font-weight:bold;
+		.collapse-state
+		{
+			position:absolute;
+			right:scut-rem(5);
+			top:scut-rem(5);
+		}
 }
