@@ -8,7 +8,7 @@
  * Controller of the yoomanApp
  */
 angular.module('yoomanApp')
-  .controller('ContactCtrl',['$scope', 'data', function ($scope, data) {
+  .controller('ContactCtrl',['$scope', 'data', '$rootScope', function ($scope, data, $rootScope) {
 
   	$scope.message = "Loading...";
     $scope.rating = {};
@@ -25,15 +25,21 @@ angular.module('yoomanApp')
 
   	$scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
 
-  	$scope.dataForm = data.getContact().get(
-  		function(success) {
-  			$scope.dataForm = success;
-  			console.log("data", success);
-  		},
-  		function(error) {
-  			$scope.message = "Error: " + error.text + " " + error.statusText;
-  			console.log("Error", $scope.message);
-  		});
+
+    $scope.loadTexts = function() {
+      $scope.dataForm = data.getContact().get(
+      function(success) {
+        $scope.dataForm = success;
+        console.log("data", success);
+      },
+      function(error) {
+        $scope.message = "Error: " + error.text + " " + error.statusText;
+        console.log("Error", $scope.message);
+      });
+    };
+
+    $scope.loadTexts();
+  	
 
   	$scope.sendComment = function() {
 
@@ -105,5 +111,10 @@ angular.module('yoomanApp')
        console.log("Percent Rating", $scope.mediaPercent);
        // console.log("Media rating", rating);
     };
+
+    $rootScope.$watch('language', function (newValue) {
+            console.log("language updated", newValue);
+            $scope.loadTexts();
+          });
     
   }]);

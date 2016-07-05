@@ -1,47 +1,176 @@
 {
-  "feedback": [],
-  "menu": [
+  "ES":
+  [
     {
-      "text": "Inicio",
-      "path": "/#/"
+      "id" : "menu",
+      "items":
+      [
+        {
+          "text": "Inicio",
+          "path": "/#/"
+        },
+        {
+          "text": "Conócenos",
+          "path": "/#/about"
+        },
+        {
+          "text": "Sugerencias",
+          "path": "/#/contact"
+        }
+      ]
     },
     {
-      "text": "Conócenos",
-      "path": "/#/about"
+      "id" : "language",
+      "flags": 
+      [
+        {
+          "text" : "Español",
+          "image": "spanish-flag.jpg",
+          "id" : "ES"
+        },
+        {
+          "text" : "Inglés",
+          "image": "english-flag.jpg",
+          "id" : "EN"
+        }
+      ]
     },
     {
-      "text": "Sugerencias",
-      "path": "/#/contact"
+      "id" : "home",
+      "gretting" : "Siempre es un placer comenzar tus aplicaciones",
+      "state" : "¡Perfecto!",
+      "HTML5" : 
+      {
+        "title" : "HTML5 Boilerplate",
+        "text"  : "HTML5 Boilerplate es una plantilla de front-end profesional para la creación de aplicaciones y sitios webs rápidos, robustos y adaptables."
+      },
+      "Angular" :
+      {
+        "title" : "Angular",
+        "text"  : "AngularJS es un conjunto de herramientas para la construcción del framework más adecuado para el desarrollo de aplicaciones."
+      },
+      "Karma" :
+      {
+        "title" : "Karma",
+        "text"  : "Karma es una herramienta espectacular para realizar test unitarios."
+      }
+    },
+    {
+      "id": "contact",
+      "title": "Cuéntanos tus sugerencias",
+      "actionSend": "Enviar",
+      "actionDelete": "Borrar comentario",
+      "formName": {
+        "label": "Nombre",
+        "placeholder": "Introduce tu nombre",
+        "errorText": "Debes introducir tu nombre"
+      },
+      "formPhone": {
+        "label": "Teléfono",
+        "placeholder": "Introduce tu número de teléfono",
+        "errorText": "El número de teléfono debe tener 9 dígitos y comenzar por 6, 7 o 9",
+        "pattern": "[9|6|7][0-9]{8}"
+      },
+      "formEmail": {
+        "label": "Email",
+        "placeholder": "Introduce tu correo electrónico",
+        "errorText": "Debes introducir una dirección email válida"
+      },
+      "formComment": {
+        "label": "Sugerencia",
+        "placeholder": "Cuéntanos qué te preocupa"
+      },
+      "formRating": {
+        "label": "Puntuación"
+      }
     }
   ],
-  "contact": {
-    "title": "Cuéntanos tus sugerencias",
-    "actionSend": "Enviar",
-    "actionDelete": "Borrar comentario",
-    "formName": {
-      "label": "Nombre",
-      "placeholder": "Introduce tu nombre",
-      "errorText": "Debes introducir tu nombre"
+  "EN" :
+  [
+    {
+      "id" : "menu",
+      "items":
+      [
+        {
+          "text": "Home",
+          "path": "/#/"
+        },
+        {
+          "text": "About as",
+          "path": "/#/about"
+        },
+        {
+          "text": "Contact",
+          "path": "/#/contact"
+        }
+      ]
     },
-    "formPhone": {
-      "label": "Teléfono",
-      "placeholder": "Introduce tu número de teléfono",
-      "errorText": "El número de teléfono debe tener 9 dígitos y comenzar por 6, 7 o 9",
-      "pattern": "[9|6|7][0-9]{8}"
+    {
+      "id" : "language",
+      "flags": 
+      [
+        {
+          "text" : "Spanish",
+          "image": "spanish-flag.jpg",
+          "id" : "ES"
+        },
+        {
+          "text" : "English",
+          "image": "english-flag.jpg",
+          "id" : "EN"
+        }
+      ]
     },
-    "formEmail": {
-      "label": "Email",
-      "placeholder": "Introduce tu correo electrónico",
-      "errorText": "Debes introducir una dirección email válida"
+    {
+      "id" : "home",
+      "gretting" : "Always a pleasure scaffolding your apps.",
+      "state" : "Splendid!",
+      "HTML5" : 
+      {
+        "title" : "HTML5 Boilerplate",
+        "text"  : "HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites."
+      },
+      "Angular" :
+      {
+        "title" : "Angular",
+        "text"  : "AngularJS is a toolset for building the framework most suited to your application development."
+      },
+      "Karma" :
+      {
+        "title" : "Karma",
+        "text"  : "Spectacular Test Runner for JavaScript."
+      }
     },
-    "formComment": {
-      "label": "Sugerencia",
-      "placeholder": "Cuéntanos qué te preocupa"
-    },
-    "formRating": {
-      "label": "Puntuación"
+    {
+      "id": "contact",
+      "title": "Tell us your suggestions",
+      "actionSend": "Send",
+      "actionDelete": "Delete comment",
+      "formName": {
+        "label": "Name",
+        "placeholder": "Insert your name",
+        "errorText": "You must be write your name"
+      },
+      "formPhone": {
+        "label": "Phone",
+        "placeholder": "Insert your phone Number",
+        "errorText": "The phone number must have 7 digits and begin with 3, 4 or 5",
+        "pattern": "[3|4|5][0-9]{6}"
+      },
+      "formEmail": {
+        "label": "Email",
+        "placeholder": "Insert your email",
+        "errorText": "You must be write a valid mail"
+      },
+      "formComment": {
+        "label": "Suggestion",
+        "placeholder": "Tell us you're worried"
+      },
+      "formRating": {
+        "label": "Score"
+      }
     }
-  },
+  ],
   "comments": [
     {
       "name": "Roger Wilco",

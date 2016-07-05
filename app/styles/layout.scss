@@ -289,3 +289,26 @@ a.display-panel
 			top:scut-rem(5);
 		}
 }
+
+ul.nav.navbar-nav.language-list
+{
+	padding:0;
+	margin-top:scut-rem(20);
+	li {
+		padding:0;
+		margin:0;
+		margin-left:scut-rem(10);
+	}
+	button {
+		padding:0;
+		border:0;
+		outline:0;
+		width:scut-rem(23);
+		height:scut-rem(14);
+		border-radius:scut-rem(4);
+		overflow:hidden;
+		img {
+			margin-top: scut-rem(-10);
+		}
+	}
+}
