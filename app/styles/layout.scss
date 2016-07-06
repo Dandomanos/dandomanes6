@@ -312,3 +312,23 @@ ul.nav.navbar-nav.language-list
 		}
 	}
 }
+
+.container
+{
+	max-width:98%;
+
+	@media(min-width:scut-rem(768))
+	{
+		max-width:scut-rem(730);
+	}
+
+	@media(min-width: scut-rem(992))
+	{
+    	max-width: scut-rem(970);
+	}
+
+	@media(min-width: scut-rem(1200))
+	{
+    	max-width: scut-rem(1170);
+	}
+}

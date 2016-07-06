@@ -227,6 +227,7 @@ gulp.task('json-server', function () {
     data: 'json-server/db.json',
     port: 3000
   });
+  gutil.log(gutil.colors.green('Json-server started at http://localhost:3000'));
 });
 
 gulp.task('default', ['build']);
