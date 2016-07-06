@@ -11,6 +11,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var imagemin = require('imagemin');
 var gutil = require('gulp-util');
+var jsonServer = require('gulp-json-srv');
 
 
 var yeoman = {
@@ -73,7 +74,7 @@ gulp.task('clean:tmp', function (cb) {
   rimraf('./.tmp', cb);
 });
 
-gulp.task('start:client', ['start:server', 'styles'], function () {
+gulp.task('start:client', ['start:server', 'styles', 'json-server'], function () {
   openURL('http://localhost:9000');
 });
 
@@ -178,8 +179,8 @@ gulp.task('client:build', ['html', 'styles'], function () {
     .pipe(cssFilter)
     .pipe($.minifyCss({cache: true}))
     .pipe(cssFilter.restore())
-    .pipe($.rev())
-    .pipe($.revReplace())
+    // .pipe($.rev())
+    // .pipe($.revReplace())
     .pipe(gulp.dest(yeoman.dist));
 });
 
@@ -215,9 +216,16 @@ gulp.task('build', ['clean:dist'], function () {
 
 
 gulp.task('build:serve', ['clean:dist'], function () {
-  runSequence(['serve:prod'], ['images', 'copy:extras', 'copy:fonts', 'client:build'], function(){
+  runSequence(['serve:prod'], ['images', 'copy:extras', 'copy:fonts', 'client:build', 'json-server'], function(){
     gutil.log(gutil.colors.green('All files generated'), gutil.colors.bgGreen('Openning Browser'));
     openURL('http://localhost:9000');
+  });
+});
+
+gulp.task('json-server', function () {
+  jsonServer.start({
+    data: 'json-server/db.json',
+    port: 3000
   });
 });
 

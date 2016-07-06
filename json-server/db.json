@@ -1,10 +1,8 @@
 {
-  "ES":
-  [
+  "ES": [
     {
-      "id" : "menu",
-      "items":
-      [
+      "id": "menu",
+      "items": [
         {
           "text": "Inicio",
           "path": "/#/"
@@ -20,39 +18,35 @@
       ]
     },
     {
-      "id" : "language",
-      "flags": 
-      [
+      "id": "language",
+      "flags": [
         {
-          "text" : "Español",
+          "text": "Español",
           "image": "spanish-flag.jpg",
-          "id" : "ES"
+          "id": "ES"
         },
         {
-          "text" : "Inglés",
+          "text": "Inglés",
           "image": "english-flag.jpg",
-          "id" : "EN"
+          "id": "EN"
         }
       ]
     },
     {
-      "id" : "home",
-      "gretting" : "Siempre es un placer comenzar tus aplicaciones",
-      "state" : "¡Perfecto!",
-      "HTML5" : 
-      {
-        "title" : "HTML5 Boilerplate",
-        "text"  : "HTML5 Boilerplate es una plantilla de front-end profesional para la creación de aplicaciones y sitios webs rápidos, robustos y adaptables."
+      "id": "home",
+      "gretting": "Siempre es un placer comenzar tus aplicaciones",
+      "state": "¡Perfecto!",
+      "HTML5": {
+        "title": "HTML5 Boilerplate",
+        "text": "HTML5 Boilerplate es una plantilla de front-end profesional para la creación de aplicaciones y sitios webs rápidos, robustos y adaptables."
       },
-      "Angular" :
-      {
-        "title" : "Angular",
-        "text"  : "AngularJS es un conjunto de herramientas para la construcción del framework más adecuado para el desarrollo de aplicaciones."
+      "Angular": {
+        "title": "Angular",
+        "text": "AngularJS es un conjunto de herramientas para la construcción del framework más adecuado para el desarrollo de aplicaciones."
       },
-      "Karma" :
-      {
-        "title" : "Karma",
-        "text"  : "Karma es una herramienta espectacular para realizar test unitarios."
+      "Karma": {
+        "title": "Karma",
+        "text": "Karma es una herramienta espectacular para realizar test unitarios."
       }
     },
     {
@@ -85,12 +79,10 @@
       }
     }
   ],
-  "EN" :
-  [
+  "EN": [
     {
-      "id" : "menu",
-      "items":
-      [
+      "id": "menu",
+      "items": [
         {
           "text": "Home",
           "path": "/#/"
@@ -106,39 +98,35 @@
       ]
     },
     {
-      "id" : "language",
-      "flags": 
-      [
+      "id": "language",
+      "flags": [
         {
-          "text" : "Spanish",
+          "text": "Spanish",
           "image": "spanish-flag.jpg",
-          "id" : "ES"
+          "id": "ES"
         },
         {
-          "text" : "English",
+          "text": "English",
           "image": "english-flag.jpg",
-          "id" : "EN"
+          "id": "EN"
         }
       ]
     },
     {
-      "id" : "home",
-      "gretting" : "Always a pleasure scaffolding your apps.",
-      "state" : "Splendid!",
-      "HTML5" : 
-      {
-        "title" : "HTML5 Boilerplate",
-        "text"  : "HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites."
+      "id": "home",
+      "gretting": "Always a pleasure scaffolding your apps.",
+      "state": "Splendid!",
+      "HTML5": {
+        "title": "HTML5 Boilerplate",
+        "text": "HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites."
       },
-      "Angular" :
-      {
-        "title" : "Angular",
-        "text"  : "AngularJS is a toolset for building the framework most suited to your application development."
+      "Angular": {
+        "title": "Angular",
+        "text": "AngularJS is a toolset for building the framework most suited to your application development."
       },
-      "Karma" :
-      {
-        "title" : "Karma",
-        "text"  : "Spectacular Test Runner for JavaScript."
+      "Karma": {
+        "title": "Karma",
+        "text": "Spectacular Test Runner for JavaScript."
       }
     },
     {
