@@ -9,11 +9,17 @@
  */
 angular.module('yoomanApp')
   .constant("baseURL", "http://localhost:3000/")
-  .service('data', ['$resource', 'baseURL', '$rootScope', function ($resource, baseURL, $rootScope) {
+  .service('data', ['$resource', 'baseURL', '$rootScope', '$cookieStore', function ($resource, baseURL, $rootScope, $cookieStore) {
 
-    if($rootScope.language===undefined)
+    if($cookieStore.get('language')===undefined)
     {
+
+      $cookieStore.put('language', 'EN');
       $rootScope.language = 'EN';
+
+
+    } else {
+      $rootScope.language = $cookieStore.get('language');
     }
     console.log("idioma", $rootScope.language);
     // AngularJS will instantiate a singleton by calling "new" on this function

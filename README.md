@@ -1,11 +1,8 @@
-# yooman
+# Dandoman
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1. and Edited by Dandomanos
-
-## Start Json-server
-
-Run `json-server --watch json-server/db.json` for start the rest api.
+version 0.15.1. and Edited by [Dandomanos](https://www.linkedin.com/in/jorge-lucas-blázquez-b121a914)
+Json-server included (Rest api).
 
 ## Build & development
 

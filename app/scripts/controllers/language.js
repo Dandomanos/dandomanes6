@@ -8,7 +8,7 @@
  * Controller of the yoomanApp
  */
 angular.module('yoomanApp')
-  .controller('LanguageCtrl',['$scope', '$rootScope', 'data', function ($scope, $rootScope, data) {
+  .controller('LanguageCtrl',['$scope', '$rootScope', 'data', '$cookieStore', function ($scope, $rootScope, data, $cookieStore) {
 
 
   	$scope.loadFlags = function() {
@@ -25,6 +25,7 @@ angular.module('yoomanApp')
     $scope.loadFlags();
 
     $scope.translate = function(lang) {
+      $cookieStore.put('language', lang);
       $rootScope.language = lang;
     };
 
