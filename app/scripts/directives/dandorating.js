@@ -17,7 +17,7 @@ angular.module('yoomanApp')
       	max: '=',
         readonly : '@'
       },
-      link: function (scope, element, attrs) {
+      link: function (scope) {
       	var updateStars = function() {
         	scope.stars = [];
 	        for(var i =  0; i < scope.max; i++) {
