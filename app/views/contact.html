@@ -1,107 +1,138 @@
 <div>
-	<h2>
-		<a data-ng-click="toggleForm()" class="display-panel">
-			<div class="titleform">
-				{{dataForm.title}}
-			</div>
-			<div class="collapse-state">
-				<i class="fa fa-chevron-up" aria-hidden="true" ng-if="formVisible"></i>
-				<i class="fa fa-chevron-down" aria-hidden="true" ng-if="!formVisible"></i>
-			</div>
-		</a>
-	</h2>
-	<div class="form-contact" ng-if="formVisible" class="collapse">
-		<form data-ng-submit="sendComment()" class="form-horizontal" name="contactForm" novalidate>
-
-			<!-- Name -->
-			<div class="form-group">
-				<label for="name" class="control-label col-md-3">{{dataForm.formName.label}}</label>
-				<div class="col-md-9">
-					<input type="text" name="name" id="name" class="form-control" placeholder="{{dataForm.formName.placeholder}}" data-ng-pattern="dataForm.formName.pattern" pattern="{{dataForm.formName.pattern}}" data-ng-model="data.name" required>
-				</div>
-			</div>
-
-			<!-- Phone Number -->
-			<div class="form-group" data-ng-class="{'has-error' : contactForm.phone.$error.pattern && contactForm.phone.$dirty}">
-				<label for="phone" class="control-label col-md-3">{{dataForm.formPhone.label}}</label>
-				<div class="col-md-9">
-					<input type="text" name="phone" id="phone" class="form-control" placeholder="{{dataForm.formPhone.placeholder}}" data-ng-pattern="dataForm.formPhone.pattern" pattern="{{dataForm.formPhone.pattern}}" data-ng-model="data.phone" required>
-					<div role="alert">
-						<p class="error" data-ng-show = "contactForm.phone.$error.pattern && contactForm.phone.$dirty">
-							{{dataForm.formPhone.errorText}}
-						</p>
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Media Rating -->
+			<div class="score-container">
+				<span class="score">{{mediaRating | setDecimal:2}}</span>
+				<div class="rating-stars">
+					<div dando-rating rating-value="-1" max="rating.max" readonly="true" class="rating-container">
+					</div>
+					<div dando-rating rating-value="rating.max" max="rating.max" readonly="true" class="rating-calculated" style="width:{{mediaPercent}}%;">
 					</div>
 				</div>
 			</div>
-
-			<!-- Email -->
-			<div class="form-group" data-ng-class="{'has-error' : contactForm.email.$invalid && contactForm.email.$dirty}">
-				<label for="email" class="col-md-3 control-label">{{dataForm.formEmail.label}}</label>
-				<div class="col-md-9">
-					<input type="email" id="email" name="email" class="form-control" placeholder="{{dataForm.formEmail.placeholder}}" data-ng-model="data.email" required>
-					<div role="alert">
-						<p class="error" data-ng-show = "contactForm.email.$invalid && contactForm.email.$dirty">
-							{{dataForm.formEmail.errorText}}
-						</p>
+		</div>
+		<div class="col-md-12">
+			<h2>
+				<a data-ng-click="toggleForm()" class="display-panel">
+					<div class="titleform">
+						{{dataForm.title}}
 					</div>
-				</div>
-			</div>
+					<div class="collapse-state">
+						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="formVisible"></i>
+						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!formVisible"></i>
+					</div>
+				</a>
+			</h2>
+			<div class="form-contact" data-ng-if="formVisible" class="collapse">
+				<form data-ng-submit="sendComment()" class="form-horizontal" name="contactForm" novalidate>
 
-			<div class="form-group">
-				<label for="comment" class="col-md-3 control-label">{{dataForm.formRating.label}}</label>
-				<div class="col-md-9">
-					<div dando-rating rating-value="rating.rate" max="rating.max"></div>
-				</div>
-			</div>
+					<!-- Name -->
+					<div class="form-group">
+						<label for="name" class="control-label col-md-3">{{dataForm.formName.label}}</label>
+						<div class="col-md-9">
+							<input type="text" name="name" id="name" class="form-control" placeholder="{{dataForm.formName.placeholder}}" data-ng-pattern="dataForm.formName.pattern" pattern="{{dataForm.formName.pattern}}" data-ng-model="data.name" required>
+						</div>
+					</div>
 
-			<!-- Comment -->
-			<div class="form-group">
-				<label for="comment" class="col-md-3 control-label">{{dataForm.formComment.label}}</label>
-				<div class="col-md-9">
-					<textarea id="comment" name="comment" class="form-control" placeholder="{{dataForm.formComment.placeholder}}" data-ng-model="data.comment" required></textarea>
-				</div>
-			</div>
+					<!-- Phone Number -->
+					<div class="form-group" data-ng-class="{'has-error' : contactForm.phone.$error.pattern && contactForm.phone.$dirty}">
+						<label for="phone" class="control-label col-md-3">{{dataForm.formPhone.label}}</label>
+						<div class="col-md-9">
+							<input type="text" name="phone" id="phone" class="form-control" placeholder="{{dataForm.formPhone.placeholder}}" data-ng-pattern="dataForm.formPhone.pattern" pattern="{{dataForm.formPhone.pattern}}" data-ng-model="data.phone" required>
+							<div role="alert">
+								<p class="error" data-ng-show = "contactForm.phone.$error.pattern && contactForm.phone.$dirty">
+									{{dataForm.formPhone.errorText}}
+								</p>
+							</div>
+						</div>
+					</div>
 
-			<!-- Actions Buttons -->
-			<div class="form-group">
-				<div class="col-xs-12">
-					<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="contactForm.$invalid">{{dataForm.actionSend}}</button>
-				</div>
-			</div>
-		</form>
-	</div>
+					<!-- Email -->
+					<div class="form-group" data-ng-class="{'has-error' : contactForm.email.$invalid && contactForm.email.$dirty}">
+						<label for="email" class="col-md-3 control-label">{{dataForm.formEmail.label}}</label>
+						<div class="col-md-9">
+							<input type="email" id="email" name="email" class="form-control" placeholder="{{dataForm.formEmail.placeholder}}" data-ng-model="data.email" required>
+							<div role="alert">
+								<p class="error" data-ng-show = "contactForm.email.$invalid && contactForm.email.$dirty">
+									{{dataForm.formEmail.errorText}}
+								</p>
+							</div>
+						</div>
+					</div>
 
-	<!-- Media Rating -->
-	<div class="score-container">
-		<span class="score">{{mediaRating | setDecimal:2}}</span>
-		<div class="rating-stars">
-			<div dando-rating rating-value="-1" max="rating.max" readonly="true" class="rating-container">
+					<div class="form-group">
+						<label for="comment" class="col-md-3 control-label">{{dataForm.formRating.label}}</label>
+						<div class="col-md-9">
+							<div dando-rating rating-value="rating.rate" max="rating.max"></div>
+						</div>
+					</div>
+
+					<!-- Comment -->
+					<div class="form-group">
+						<label for="comment" class="col-md-3 control-label">{{dataForm.formComment.label}}</label>
+						<div class="col-md-9">
+							<textarea id="comment" name="comment" class="form-control" placeholder="{{dataForm.formComment.placeholder}}" data-ng-model="data.comment" required></textarea>
+						</div>
+					</div>
+
+					<!-- Actions Buttons -->
+					<div class="form-group">
+						<div class="col-xs-12">
+							<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="contactForm.$invalid">{{dataForm.actionSend}}</button>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div dando-rating rating-value="rating.max" max="rating.max" readonly="true" class="rating-calculated" style="width:{{mediaPercent}}%;">
+		</div>
+		<div class="col-md-12">
+			<h2>
+				<a data-ng-click="toggleComments()" class="display-panel">
+					<div class="titleform" data-ng-if="!commentsVisible">
+						{{dataForm.commentTitleShow}}
+					</div>
+					<div class="titleform" data-ng-if="commentsVisible">
+						{{dataForm.commentTitleHide}}
+					</div>
+					<div class="collapse-state">
+						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="commentsVisible"></i>
+						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!commentsVisible"></i>
+					</div>
+				</a>
+			</h2>
+			<!-- Comments service -->
+			<div class="comments" data-ng-if="commentsVisible">
+				<ul class="listComments row">
+					<li data-ng-repeat="comment in comments track by $index" class="col-md-6">
+						<div class="comment-container">
+							<div class="row">
+								<div class="col-sm-4 comment-author">
+									<span class="comment-title">{{comment.name}}</span><br />
+									<a href="mailto:{{comment.email}}">{{comment.email}}<br />
+										<a data-ng-href="tel:+{{comment.phone}}">{{comment.phone}}</a><br />
+										<span dando-rating rating-value="comment.rating" max="rating.max" readonly="true"></span>
+									</div>
+									<div class="col-sm-8">
+										<p class="comment-text">
+											"{{comment.comment}}"
+										</p>
+									</div>
+								</div>
+								<a ng-click="delete(comment.id, $index)" class="close-button" title="{{dataForm.actionDelete}}"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sr-only">{{dataForm.actionDelete}}</span></a>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
+	
 
-	<!-- Comments service -->
-	<div class="comments">
-		<ul class="listComments row">
-			<li data-ng-repeat="comment in comments track by $index" class="col-xs-12">
-				<div class="row">
-					<div class="col-sm-4 comment-author">
-						<span class="comment-title">{{comment.name}}</span><br />
-						<a href="mailto:{{comment.email}}">{{comment.email}}<br />
-							<a data-ng-href="tel:+{{comment.phone}}">{{comment.phone}}</a><br />
-							<span dando-rating rating-value="comment.rating" max="rating.max" readonly="true"></span>
-						</div>
-						<div class="col-sm-8">
-							<p class="comment-text">
-								"{{comment.comment}}"
-							</p>
-						</div>
-					</div>
-					<a ng-click="delete(comment.id, $index)" class="close-button" title="{{dataForm.actionDelete}}"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sr-only">{{dataForm.actionDelete}}</span></a>
-				</li>
-			</ul>
-		</div>
-		<div>
+	
 
+	
+
+	
+
+	

@@ -94,6 +94,11 @@ textarea
 	max-height:scut-rem(400);
 	max-width:100%;
 }
+
+.titleform {
+	@include truncate(calc(100% - 40px));
+}
+
 ul.rating
 {
 	padding:0;
@@ -140,11 +145,13 @@ ul.listComments
 	list-style:none;
 	padding:0 scut-rem(15);
 	li {
-		display :inline-block;
+		padding:scut-rem(5);
+		margin-bottom:scut-rem(7.5);
+		.comment-container {
 		@include border-radius(scut-rem(5));
 		border:$borde;
-		padding-top:scut-rem(10);
-		margin-bottom:scut-rem(15);
+		padding:scut-rem(10);
+		}
 		ul.rating
 		{
 			li {
@@ -162,8 +169,8 @@ ul.listComments
 		.close-button
 		{
 			position:absolute;
-			top:scut-rem(5);
-			right:scut-rem(5);
+			top:scut-rem(10);
+			right:scut-rem(10);
 			cursor:pointer;
 			@include own-css3-prefix(transition, all 0.3s ease);
 			i{
@@ -298,6 +305,8 @@ ul.nav.navbar-nav.language-list
 		padding:0;
 		margin:0;
 		margin-left:scut-rem(10);
+		display: inline-block;
+		margin-bottom:scut-rem(8);
 	}
 	button {
 		padding:0;

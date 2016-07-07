@@ -17,11 +17,17 @@ angular.module('yoomanApp')
     $scope.newPost = new data.getComments();
     $scope.mediaRating = 0;
     $scope.formVisible = false;
+    $scope.commentsVisible = false;
 
     $scope.toggleForm = function()
     {
         $scope.formVisible = !$scope.formVisible;
     };
+
+    $scope.toggleComments = function()
+    {
+        $scope.commentsVisible = !$scope.commentsVisible;
+    }
 
   	$scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
 
@@ -30,7 +36,7 @@ angular.module('yoomanApp')
       $scope.dataForm = data.getContact().get(
       function(success) {
         $scope.dataForm = success;
-        console.log("data", success);
+        console.log("dataForm", success);
       },
       function(error) {
         $scope.message = "Error: " + error.text + " " + error.statusText;

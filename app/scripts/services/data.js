@@ -16,8 +16,6 @@ angular.module('yoomanApp')
 
       $cookieStore.put('language', 'EN');
       $rootScope.language = 'EN';
-
-
     } else {
       $rootScope.language = $cookieStore.get('language');
     }

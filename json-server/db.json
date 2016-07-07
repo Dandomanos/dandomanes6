@@ -52,6 +52,8 @@
     {
       "id": "contact",
       "title": "Cuéntanos tus sugerencias",
+      "commentTitleShow" : "Mostrar comentarios",
+      "commentTitleHide" : "Ocultar comentarios",
       "actionSend": "Enviar",
       "actionDelete": "Borrar comentario",
       "formName": {
@@ -132,6 +134,8 @@
     {
       "id": "contact",
       "title": "Tell us your suggestions",
+      "commentTitleShow" : "Show comments",
+      "commentTitleHide" : "Hide comments",
       "actionSend": "Send",
       "actionDelete": "Delete comment",
       "formName": {
@@ -207,6 +211,22 @@
       "comment": "ey, i have a new email!",
       "rating": 1,
       "id": 27
+    },
+    {
+      "name": "Grim Fandango",
+      "phone": 3645784,
+      "email": "necro@micon.com",
+      "comment": "Frightening template!",
+      "rating": 2,
+      "id": 28
+    },
+    {
+      "name": "Indiana Jones",
+      "phone": 5678897,
+      "email": "jrjones@atlantis.com",
+      "comment": "Indiana was the dog, -.-",
+      "rating": 5,
+      "id": 29
     }
   ]
 }
