@@ -64,7 +64,7 @@
 					<div class="form-group">
 						<label for="comment" class="col-md-3 control-label">{{dataForm.formRating.label}}</label>
 						<div class="col-md-9">
-							<div dando-rating rating-value="rating.rate" max="rating.max"></div>
+							<div data-dando-rating data-rating-value="rating.rate" data-max="rating.max"></div>
 						</div>
 					</div>
 
@@ -106,13 +106,13 @@
 					<li data-ng-repeat="comment in comments track by $index" class="col-md-6">
 						<div class="comment-container">
 							<div class="row">
-								<div class="col-sm-4 comment-author">
-									<span class="comment-title">{{comment.name}}</span><br />
+								<div class="col-sm-5 comment-author">
+									<div class="comment-title">{{comment.name}}</div>
 									<a href="mailto:{{comment.email}}">{{comment.email}}<br />
 										<a data-ng-href="tel:+{{comment.phone}}">{{comment.phone}}</a><br />
-										<span dando-rating rating-value="comment.rating" max="rating.max" readonly="true"></span>
+										<span data-dando-rating data-rating-value="comment.rating" data-max="rating.max" readonly="true"></span>
 									</div>
-									<div class="col-sm-8">
+									<div class="col-sm-7">
 										<p class="comment-text">
 											"{{comment.comment}}"
 										</p>

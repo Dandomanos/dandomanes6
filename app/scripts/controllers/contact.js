@@ -8,7 +8,7 @@
  * Controller of the yoomanApp
  */
 angular.module('yoomanApp')
-  .controller('ContactCtrl',['$scope', 'data', '$rootScope', function ($scope, data, $rootScope) {
+  .controller('ContactCtrl',['$scope', 'data', '$rootScope', '$timeout', function ($scope, data, $rootScope, $timeout) {
 
   	$scope.message = "Loading...";
     $scope.rating = {};
@@ -54,10 +54,9 @@ angular.module('yoomanApp')
       $scope.newPost.comment = $scope.data;
       data.getComments().save($scope.newPost.comment, function(data){
           console.log("comment update", data + " width id " + data.id);
-          $scope.formVisible = false;
           $scope.comments.push(data);
           $scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
-          // $scope.contactForm.$setPristine();
+          $scope.formVisible = false;
           $scope.calculateMedia();
       });
   	};

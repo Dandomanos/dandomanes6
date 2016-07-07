@@ -236,6 +236,7 @@ ul.listComments
 		font-weight:bold;
 		font-size:scut-rem(18);
 		color:$userColor;
+		@include truncate(100%);
 	}
 	a {
 		text-decoration:none;

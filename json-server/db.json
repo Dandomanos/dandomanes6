@@ -52,8 +52,8 @@
     {
       "id": "contact",
       "title": "Cuéntanos tus sugerencias",
-      "commentTitleShow" : "Mostrar comentarios",
-      "commentTitleHide" : "Ocultar comentarios",
+      "commentTitleShow": "Mostrar comentarios",
+      "commentTitleHide": "Ocultar comentarios",
       "actionSend": "Enviar",
       "actionDelete": "Borrar comentario",
       "formName": {
@@ -134,8 +134,8 @@
     {
       "id": "contact",
       "title": "Tell us your suggestions",
-      "commentTitleShow" : "Show comments",
-      "commentTitleHide" : "Hide comments",
+      "commentTitleShow": "Show comments",
+      "commentTitleHide": "Hide comments",
       "actionSend": "Send",
       "actionDelete": "Delete comment",
       "formName": {
