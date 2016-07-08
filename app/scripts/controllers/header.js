@@ -12,33 +12,29 @@ angular.module('yoomanApp')
   	$scope.path = '/#'+$location.path();
     $scope.message = "Loading...";
 
-    $scope.loadMenu = function() {
+    $scope.loadMenu = ()  => {
       $scope.menu = data.getMenu().get(
       function(success) {
         $scope.menu = success.items;
-        console.log("success", $scope.menu);
+        console.log("Menu DATA", $scope.menu);
       },
       function(error) {
-        $scope.message = "Error: " + error.status + " " + error.statusText;
+        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log($scope.message);
       });
     };
 
     $scope.loadMenu();
   	
   	
-  	$scope.isActive = function(path)
-  	{
-  		return path===$scope.path;
-  	};
+  	$scope.isActive = (path) => path===$scope.path;
+  	
 
-  	$scope.$on('$locationChangeSuccess', function() {
-  		$scope.path = '/#'+$location.path();
-  	});
+  	$scope.$on('$locationChangeSuccess', () => { $scope.path = '/#'+$location.path(); });
 
 
-    $rootScope.$watch('language', function (newValue) {
-            console.log("language updated", newValue);
+    $rootScope.$watch('language', (newValue) => {
+            console.log(`language updated to ${newValue} reloading Menu Texts`);
             $scope.loadMenu();
           });
-    
   }]);

@@ -10,21 +10,22 @@
 angular.module('yoomanApp')
   .controller('MainCtrl', ['$scope', 'data', '$rootScope', function ($scope, data, $rootScope) {
 
-  	$scope.loadText = function() {
+  	$scope.loadText = () => {
       $scope.home = data.getHome().get(
-      function(success) {
+      success => {
         $scope.home = success;
         console.log("Home Texts", $scope.home);
       },
-      function(error) {
-        $scope.message = "Error: " + error.status + " " + error.statusText;
+      error => {
+        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(error, $scope.message);
       });
     };
 
     $scope.loadText();
     
     $rootScope.$watch('language', function (newValue) {
-            console.log("language updated", newValue);
+            console.log(`language updated to ${newValue} reloading Home Texts`);
             $scope.loadText();
           });
   }]);

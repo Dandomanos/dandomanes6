@@ -7,7 +7,7 @@
  * # dandoRating
  */
 angular.module('yoomanApp')
-  .directive('dandoRating', function () {
+  .directive('dandoRating', () => {
     return {
       restrict: 'A',
       template:
@@ -17,30 +17,28 @@ angular.module('yoomanApp')
       	max: '=',
         readonly : '@'
       },
-      link: function (scope) {
-      	var updateStars = function() {
+      link: scope => {
+      	var updateStars = () => {
+          // console.log("updating values");
         	scope.stars = [];
-	        for(var i =  0; i < scope.max; i++) {
+	        for(let i =  0; i < scope.max; i++) {
 	        	scope.stars.push({filled: i < scope.ratingValue});
 	        }
-      		// console.log("stars updated");
       	};
 
-      	scope.toggle = function(index)
+      	scope.toggle = index =>
       	{
           if(scope.readonly && scope.readonly === 'true')
           {
             return;
           }
       		scope.ratingValue = index + 1;
-      		console.log("new value", scope.ratingValue);
+      		// console.log("new value", scope.ratingValue);
       	};
 
 
-      	scope.$watch('ratingValue', function(oldVal, newVal) {
-      		if(newVal) {
-      			updateStars();
-      		}
+      	scope.$watch('ratingValue', (oldVal, newVal) => {
+      		if(newVal) updateStars();
       	});
       }
     };

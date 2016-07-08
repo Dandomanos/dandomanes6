@@ -11,26 +11,27 @@ angular.module('yoomanApp')
   .controller('LanguageCtrl',['$scope', '$rootScope', 'data', '$cookieStore', function ($scope, $rootScope, data, $cookieStore) {
 
 
-  	$scope.loadFlags = function() {
+  	$scope.loadFlags = ()  => {
       $scope.flags = data.getFlags().get(
-      function(success) {
+      success => {
         $scope.flags = success.flags;
         console.log("success", $scope.flags);
       },
-      function(error) {
-        $scope.message = "Error: " + error.status + " " + error.statusText;
+      error => {
+        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(error, $scope.message);
       });
     };
 
     $scope.loadFlags();
 
-    $scope.translate = function(lang) {
+    $scope.translate = lang => {
       $cookieStore.put('language', lang);
       $rootScope.language = lang;
     };
 
-    $rootScope.$watch('language', function (newValue) {
-            console.log("language updated", newValue);
+    $rootScope.$watch('language', newValue => {
+            console.log(`language updated to ${newValue} reloading flags Texts`);
             $scope.loadFlags();
           });
 

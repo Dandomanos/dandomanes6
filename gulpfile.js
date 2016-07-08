@@ -12,6 +12,7 @@ var browserSync = require('browser-sync');
 var imagemin = require('imagemin');
 var gutil = require('gulp-util');
 var jsonServer = require('gulp-json-srv');
+var babel = require('gulp-babel');
 
 
 var yeoman = {
@@ -66,7 +67,11 @@ gulp.task('styles', function () {
 });
 
 gulp.task('lint:scripts', function () {
+  gutil.log(gutil.colors.green('BABELING'));
   return gulp.src(paths.scripts)
+  .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(lintScripts());
 });
 

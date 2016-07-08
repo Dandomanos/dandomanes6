@@ -19,41 +19,34 @@ angular.module('yoomanApp')
     $scope.formVisible = false;
     $scope.commentsVisible = false;
 
-    $scope.toggleForm = function()
-    {
-        $scope.formVisible = !$scope.formVisible;
-    };
+    $scope.toggleForm = () => $scope.formVisible = !$scope.formVisible;
 
-    $scope.toggleComments = function()
-    {
-        $scope.commentsVisible = !$scope.commentsVisible;
-    }
+    $scope.toggleComments = () => $scope.commentsVisible = !$scope.commentsVisible;
 
   	$scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
 
-
-    $scope.loadTexts = function() {
+    $scope.loadTexts = () => {
       $scope.dataForm = data.getContact().get(
       function(success) {
         $scope.dataForm = success;
         console.log("dataForm", success);
       },
       function(error) {
-        $scope.message = "Error: " + error.text + " " + error.statusText;
+        $scope.message = `Error: ${error.text} ${error.statusText}`;
         console.log("Error", $scope.message);
       });
-    };
+    }
 
     $scope.loadTexts();
   	
 
-  	$scope.sendComment = function() {
+  	$scope.sendComment = () => {
 
       $scope.data.rating=$scope.rating.rate;
-      console.log("Send Data", $scope.data);
+      console.log("Sending Data", $scope.data);
       $scope.newPost.comment = $scope.data;
-      data.getComments().save($scope.newPost.comment, function(data){
-          console.log("comment update", data + " width id " + data.id);
+      data.getComments().save($scope.newPost.comment, data => {
+          console.log(data, `comment posted with id ${data.id}`);
           $scope.comments.push(data);
           $scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
           $scope.formVisible = false;
@@ -62,42 +55,42 @@ angular.module('yoomanApp')
   	};
 
     
-
+    var loadComments = () => {
     $scope.comments = data.getComments().query(
-      function(success){
-        $scope.comments = success;
+      success => {
         console.log("comments", success);
+        $scope.comments = success;
         $scope.calculateMedia();
       },
-      function(error){
-        $scope.message = "Error: " + error.text + " " + error.statusText;
+      error => {
+        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
         console.log("Error", $scope.message);
       });
+  };
+
+  loadComments();
 
 
-    $scope.$watch($scope.comments, function(oldVal, newVal) {
-          if(newVal) {
+    $scope.$watch($scope.comments, newVal => {
             console.log("comment update from watcher");
-            $scope.$apply();
-          }
+            loadComments();
         });
 
-    $scope.delete = function(ID, index) {
+    $scope.delete = (ID, index) => {
       console.log("Delete", ID);
-      data.getComments().delete({id:ID},
-        function(success){
+      data.getComments().delete(
+        {id:ID},
+        success => {
           console.log("comment deleted", success);
-          // deletefromView(ID);
           $scope.comments.splice(index, 1);
           $scope.calculateMedia();
         },
-        function(error) {
-          console.log("error", error+" "+error.text + ": "+ error.statusText);
-        });
+        error => { console.log(error, `Error: ${error.status} - ${error.text} - ${error.statusText}`);}
+        );
     };
 
 
-    $scope.calculateMedia = function()
+    $scope.calculateMedia = () =>
     {
       if($scope.comments.length<1) {
         $scope.mediaRating = 0;
@@ -105,20 +98,18 @@ angular.module('yoomanApp')
         return;
       }
       var count = 0;
-       for(var i=0; i<$scope.comments.length; i++)
+       for(let i=0; i<$scope.comments.length; i++)
        {
-          console.log("rating: ", $scope.comments[i].rating);
           count += $scope.comments[i].rating;
        }
        $scope.mediaRating = count/$scope.comments.length;
        $scope.mediaPercent = $scope.mediaRating/$scope.rating.max*100;
        console.log("Media Rating", $scope.mediaRating);
        console.log("Percent Rating", $scope.mediaPercent);
-       // console.log("Media rating", rating);
     };
 
-    $rootScope.$watch('language', function (newValue) {
-            console.log("language updated", newValue);
+    $rootScope.$watch('language', newValue  => {
+            console.log(`language updated to ${newValue} reloading contact Texts`);
             $scope.loadTexts();
           });
     

@@ -8,10 +8,8 @@
  * Controller of the yoomanApp
  */
 angular.module('yoomanApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('AboutCtrl', ['$scope', function ($scope) {
+    let cadena = `Mi cadena`;
+    var mostrarCadena= () => console.log(`Cadena desde es6 ${cadena}`);
+    mostrarCadena();
+  }]);
