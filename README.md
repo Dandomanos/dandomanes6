@@ -4,6 +4,8 @@ This project is generated with [yo angular generator](https://github.com/yeoman/
 version 0.15.1. and Edited by [Dandomanos](https://www.linkedin.com/in/jorge-lucas-blázquez-b121a914)
 Json-server included (Rest api).
 
+(Updated to angular 1.5 and es6)
+
 ## Build & development
 
 Run `gulp` for building and `gulp serve` for preview.
