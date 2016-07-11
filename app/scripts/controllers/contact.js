@@ -17,7 +17,7 @@ class ContactCtrl {
 
     this.message = "Loading...";
     this.rating = {rate : 5, max:5};
-    this.newPost = new this.DATA.getComments();
+    this.newPost = this.DATA.getComments();
     this.mediaRating = 0;
     this.formVisible = false;
     this.commentsVisible = false;

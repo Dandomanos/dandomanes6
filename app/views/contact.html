@@ -110,7 +110,7 @@
 									<div class="comment-title">{{comment.name}}</div>
 									<a href="mailto:{{comment.email}}">{{comment.email}}<br />
 										<a data-ng-href="tel:+{{comment.phone}}">{{comment.phone}}</a><br />
-										<span data-dando-rating data-rating-value="comment.rating" data-max="rating.max" readonly="true"></span>
+										<span data-dando-rating data-rating-value="comment.rating" data-max="contact.rating.max" readonly="true"></span>
 									</div>
 									<div class="col-sm-7">
 										<p class="comment-text">
@@ -118,7 +118,7 @@
 										</p>
 									</div>
 								</div>
-								<a ng-click="delete(comment.id, $index)" class="close-button" title="{{dataForm.actionDelete}}"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sr-only">{{dataForm.actionDelete}}</span></a>
+								<a ng-click="contact.delete(comment.id, $index)" class="close-button" title="{{dataForm.actionDelete}}"><i class="fa fa-times-circle" aria-hidden="true"></i><span class="sr-only">{{dataForm.actionDelete}}</span></a>
 							</div>
 						</li>
 					</ul>
