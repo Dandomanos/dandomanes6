@@ -7,32 +7,38 @@
  * # LanguageCtrl
  * Controller of the yoomanApp
  */
-angular.module('yoomanApp')
-  .controller('LanguageCtrl',['$scope', '$rootScope', 'data', '$cookieStore', function ($scope, $rootScope, data, $cookieStore) {
+class LanguageCtrl {
+  constructor($rootScope, data, $cookieStore)
+  {
+    this.root = $rootScope;
+    this.DATA = data;
+    this.cookie = $cookieStore;
+    this.loadFlags();
+    this.root.$watch('language', newValue => {
+            console.log(`language updated to ${newValue} reloading flags Texts`);
+            this.loadFlags();
+          });
+  }
 
-
-  	$scope.loadFlags = ()  => {
-      $scope.flags = data.getFlags().get(
+  loadFlags() {
+    console.log("starting flags");
+    this.flags = this.DATA.getFlags().get(
       success => {
-        $scope.flags = success.flags;
-        console.log("success", $scope.flags);
+        this.flags = success.flags;
+        console.log("Flags", this.flags);
       },
       error => {
-        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
-        console.log(error, $scope.message);
+        this.message = `Error Flags: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(this.message);
       });
-    };
+  }
 
-    $scope.loadFlags();
+  translate(lang) {
+    this.cookie.put('language', lang);
+    this.root.language = lang;
+  }
+}
 
-    $scope.translate = lang => {
-      $cookieStore.put('language', lang);
-      $rootScope.language = lang;
-    };
-
-    $rootScope.$watch('language', newValue => {
-            console.log(`language updated to ${newValue} reloading flags Texts`);
-            $scope.loadFlags();
-          });
-
-  }]);
+LanguageCtrl.$inject = ['$rootScope', 'data', '$cookieStore'];
+angular.module('yoomanApp')
+.controller('LanguageCtrl', LanguageCtrl);

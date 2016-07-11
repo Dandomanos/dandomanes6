@@ -7,25 +7,35 @@
  * # MainCtrl
  * Controller of the yoomanApp
  */
-angular.module('yoomanApp')
-  .controller('MainCtrl', ['$scope', 'data', '$rootScope', function ($scope, data, $rootScope) {
 
-  	$scope.loadText = () => {
-      $scope.home = data.getHome().get(
+class MainCtrl {
+  constructor(data, $rootScope)
+  {
+    this.DATA = data;
+    this.root = $rootScope;
+
+    this.loadText();
+
+    this.root.$watch('language', newValue => {
+            console.log(`language updated to ${newValue} reloading Home Texts`);
+            this.loadText();
+          });
+  }
+
+  loadText() {
+    this.home = this.DATA.getHome().get(
       success => {
-        $scope.home = success;
-        console.log("Home Texts", $scope.home);
+        this.home = success;
+        console.log("Home Texts", this.home);
       },
       error => {
-        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
-        console.log(error, $scope.message);
+        this.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(this.message);
       });
-    };
+  }
+}
 
-    $scope.loadText();
-    
-    $rootScope.$watch('language', function (newValue) {
-            console.log(`language updated to ${newValue} reloading Home Texts`);
-            $scope.loadText();
-          });
-  }]);
+MainCtrl.$inject = ['data', '$rootScope'];
+
+angular.module('yoomanApp')
+  .controller('MainCtrl', MainCtrl);

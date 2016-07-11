@@ -11,6 +11,6 @@ angular.module('yoomanApp')
     return {
       templateUrl: 'views/header.html',
       restrict: 'E',
-      controller: 'HeaderCtrl'
+      controller: 'HeaderCtrl as header',
     };
   });

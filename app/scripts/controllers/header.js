@@ -7,34 +7,45 @@
  * # HeaderCtrl
  * Controller of the yoomanApp
  */
-angular.module('yoomanApp')
-  .controller('HeaderCtrl',['$scope', '$location', 'data', '$rootScope', function ($scope, $location, data, $rootScope) {
-  	$scope.path = '/#'+$location.path();
-    $scope.message = "Loading...";
 
-    $scope.loadMenu = ()  => {
-      $scope.menu = data.getMenu().get(
-      function(success) {
-        $scope.menu = success.items;
-        console.log("Menu DATA", $scope.menu);
-      },
-      function(error) {
-        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
-        console.log($scope.message);
-      });
-    };
+ class HeaderCtrl
+ {
+    constructor(data, $location, $rootScope) {
+      this.location = $location;
+      this.DATA = data;
+      this.root = $rootScope;
+      console.log("LOCATION", this.location.path());
+      this.path = `/#${this.location.path()}`;
 
-    $scope.loadMenu();
-  	
-  	
-  	$scope.isActive = (path) => path===$scope.path;
-  	
+      this.message = "reading a var";
+      this.loadMenu();
 
-  	$scope.$on('$locationChangeSuccess', () => { $scope.path = '/#'+$location.path(); });
+      this.root.$on('$locationChangeSuccess', () => { this.path = `/#${this.location.path()}`;});
 
-
-    $rootScope.$watch('language', (newValue) => {
+      this.root.$watch('language', newValue => {
             console.log(`language updated to ${newValue} reloading Menu Texts`);
-            $scope.loadMenu();
+            this.loadMenu();
           });
-  }]);
+    }
+
+    loadMenu(){
+      this.menu = this.DATA.getMenu().get(
+      success => {
+        this.menu = success.items;
+        console.log("Menu DATA", this.menu);
+      },
+      error => {
+        this.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(this.message);
+      });
+    }
+
+    isActive(path) { return path === this.path;}
+
+ }
+
+
+HeaderCtrl.$inject = ['data', '$location', '$rootScope'];
+
+angular.module('yoomanApp')
+  .controller('HeaderCtrl', HeaderCtrl);

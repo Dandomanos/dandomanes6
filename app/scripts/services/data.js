@@ -18,6 +18,7 @@ angular.module('yoomanApp')
       $rootScope.language = 'EN';
     } else {
       $rootScope.language = $cookieStore.get('language');
+      console.log("ACTUAL LANGUAGE", $rootScope.language);
     }
     console.log("idioma", $rootScope.language);
     // AngularJS will instantiate a singleton by calling "new" on this function

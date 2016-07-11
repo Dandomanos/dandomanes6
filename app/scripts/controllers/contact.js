@@ -7,110 +7,113 @@
  * # ContactCtrl
  * Controller of the yoomanApp
  */
-angular.module('yoomanApp')
-  .controller('ContactCtrl',['$scope', 'data', '$rootScope', '$timeout', function ($scope, data, $rootScope, $timeout) {
 
-  	$scope.message = "Loading...";
-    $scope.rating = {};
-    $scope.rating.rate = 5;
-    $scope.rating.max = 5;
-    $scope.newPost = new data.getComments();
-    $scope.mediaRating = 0;
-    $scope.formVisible = false;
-    $scope.commentsVisible = false;
+class ContactCtrl {
+  constructor(data, $rootScope, $scope)
+  {
+    this.DATA = data;
+    this.root = $rootScope;
+    this.scope = $scope;
 
-    $scope.toggleForm = () => $scope.formVisible = !$scope.formVisible;
+    this.message = "Loading...";
+    this.rating = {rate : 5, max:5};
+    this.newPost = new this.DATA.getComments();
+    this.mediaRating = 0;
+    this.formVisible = false;
+    this.commentsVisible = false;
 
-    $scope.toggleComments = () => $scope.commentsVisible = !$scope.commentsVisible;
-
-  	$scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
-
-    $scope.loadTexts = () => {
-      $scope.dataForm = data.getContact().get(
-      function(success) {
-        $scope.dataForm = success;
-        console.log("dataForm", success);
-      },
-      function(error) {
-        $scope.message = `Error: ${error.text} ${error.statusText}`;
-        console.log("Error", $scope.message);
-      });
-    }
-
-    $scope.loadTexts();
-  	
-
-  	$scope.sendComment = () => {
-
-      $scope.data.rating=$scope.rating.rate;
-      console.log("Sending Data", $scope.data);
-      $scope.newPost.comment = $scope.data;
-      data.getComments().save($scope.newPost.comment, data => {
-          console.log(data, `comment posted with id ${data.id}`);
-          $scope.comments.push(data);
-          $scope.data = { name: "", phone: "", email:"", comment:"", rating:$scope.rating.rate };
-          $scope.formVisible = false;
-          $scope.calculateMedia();
-      });
-  	};
-
-    
-    var loadComments = () => {
-    $scope.comments = data.getComments().query(
-      success => {
-        console.log("comments", success);
-        $scope.comments = success;
-        $scope.calculateMedia();
-      },
-      error => {
-        $scope.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
-        console.log("Error", $scope.message);
-      });
-  };
-
-  loadComments();
+    this.data = { name: "", phone: "", email:"", comment:"", rating:this.rating.rate };
 
 
-    $scope.$watch($scope.comments, newVal => {
+    //watchers
+    this.scope.$watch(this.comments, () => {
             console.log("comment update from watcher");
-            loadComments();
+            this.loadComments();
         });
 
-    $scope.delete = (ID, index) => {
-      console.log("Delete", ID);
-      data.getComments().delete(
-        {id:ID},
-        success => {
-          console.log("comment deleted", success);
-          $scope.comments.splice(index, 1);
-          $scope.calculateMedia();
-        },
-        error => { console.log(error, `Error: ${error.status} - ${error.text} - ${error.statusText}`);}
-        );
-    };
-
-
-    $scope.calculateMedia = () =>
-    {
-      if($scope.comments.length<1) {
-        $scope.mediaRating = 0;
-        $scope.mediaPercent = 0;
-        return;
-      }
-      var count = 0;
-       for(let i=0; i<$scope.comments.length; i++)
-       {
-          count += $scope.comments[i].rating;
-       }
-       $scope.mediaRating = count/$scope.comments.length;
-       $scope.mediaPercent = $scope.mediaRating/$scope.rating.max*100;
-       console.log("Media Rating", $scope.mediaRating);
-       console.log("Percent Rating", $scope.mediaPercent);
-    };
-
-    $rootScope.$watch('language', newValue  => {
+    this.root.$watch('language', newValue  => {
             console.log(`language updated to ${newValue} reloading contact Texts`);
-            $scope.loadTexts();
+            this.loadTexts();
           });
-    
-  }]);
+  }
+
+  toggleForm() { this.formVisible = !this.formVisible;}
+
+  toggleComments() { this.commentsVisible = !this.commentsVisible; }
+
+  loadTexts() {
+    this.dataForm = this.DATA.getContact().get(
+      success => {
+        this.dataForm = success;
+        console.log("DATA Form", this.dataForm);
+      },
+      error => {
+        this.message = `Error: ${error.text} ${error.statusText}`;
+        console.log("Error", this.message);
+      });
+  }
+
+  sendComment() {
+    this.data.rating = this.rating.rate;
+    console.log("Sending Data", this.data);
+    this.newPost.comment = this.data;
+    this.DATA.getComments().save(this.newPost.comment, data => {
+      console.log(data, `comment posted with id ${data.id}`);
+      this.comments.push(data);
+      this.data = { name: "", phone: "", email:"", comment:"", rating:this.rating.rate };
+      this.formVisible = false;
+      this.calculateMedia();
+    });
+  }
+
+  loadComments() {
+    this.comments = this.DATA.getComments().query(
+      success => {
+        console.log("comments", success);
+        this.comments = success;
+        this.calculateMedia();
+      },
+      error => {
+        this.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(this.message);
+      });
+  }
+
+  delete(ID, index) {
+    this.DATA.getComments().delete(
+      {id:ID},
+      success => {
+        console.log("comment deleted", success);
+        this.comments.splice(index, 1);
+        this.calculateMedia();
+      },
+      error => {
+        this.message = `Error: ${error.status} - ${error.text} - ${error.statusText}`;
+        console.log(this.message);
+      });
+  }
+
+  calculateMedia() {
+    if(this.comments.length<1)
+    {
+      this.mediaRating = 0;
+      this.mediaPercent = 0;
+      return;
+    }
+    var count = 0;
+    for(let i=0; i<this.comments.length; i++)
+    {
+      count += this.comments[i].rating;
+    }
+    this.mediaRating = count/this.comments.length;
+    this.mediaPercent = this.mediaRating/this.rating.max*100;
+    console.log("Media Rating", this.mediaRating);
+    console.log("Percent Rating", this.mediaPercent);
+  }
+
+}
+
+ContactCtrl.$inject = ['data', '$rootScope', '$scope'];
+
+angular.module('yoomanApp')
+      .controller('ContactCtrl', ContactCtrl);

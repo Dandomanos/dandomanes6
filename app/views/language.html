@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav navbar-right language-list">
-	<li data-ng-repeat="flag in flags">
-		<button data-ng-click="translate(flag.id)">
-			<img data-ng-src="images/{{flag.image}}" alt="">
+	<li data-ng-repeat="flag in lang.flags">
+		<button data-ng-click="lang.translate(flag.id)" title="{{flag.text}}">
+			<img data-ng-src="images/{{flag.image}}" alt="{{flag.text}}">
 			<span class="sr-only">{{flag.text}}</span>
 		</button>
 	</li>

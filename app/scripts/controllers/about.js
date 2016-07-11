@@ -7,9 +7,16 @@
  * # AboutCtrl
  * Controller of the yoomanApp
  */
+ class AboutCtrl
+ {
+ 	constructor()
+ 	{
+ 		this.name = `AboutCtrl`;
+ 		this.title = this.generateTitle();
+ 	}
+ 	generateTitle() {
+ 		return `Controlador ${this.name} generado con ES6`;
+ 	}
+ }
 angular.module('yoomanApp')
-  .controller('AboutCtrl', ['$scope', function ($scope) {
-    let cadena = `Mi cadena`;
-    var mostrarCadena= () => console.log(`Cadena desde es6 ${cadena}`);
-    mostrarCadena();
-  }]);
+  .controller('AboutCtrl', AboutCtrl);

@@ -3,46 +3,46 @@
 		<div class="col-md-12">
 			<!-- Media Rating -->
 			<div class="score-container">
-				<span class="score">{{mediaRating | setDecimal:2}}</span>
+				<span class="score">{{contact.mediaRating | setDecimal:2}}</span>
 				<div class="rating-stars">
-					<div dando-rating rating-value="-1" max="rating.max" readonly="true" class="rating-container">
+					<div dando-rating rating-value="-1" max="contact.rating.max" readonly="true" class="rating-container">
 					</div>
-					<div dando-rating rating-value="rating.max" max="rating.max" readonly="true" class="rating-calculated" style="width:{{mediaPercent}}%;">
+					<div dando-rating rating-value="contact.rating.max" max="contact.rating.max" readonly="true" class="rating-calculated" style="width:{{contact.mediaPercent}}%;">
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-12">
 			<h2>
-				<a data-ng-click="toggleForm()" class="display-panel">
+				<a data-ng-click="contact.toggleForm()" class="display-panel">
 					<div class="titleform">
-						{{dataForm.title}}
+						{{contact.dataForm.title}}
 					</div>
 					<div class="collapse-state">
-						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="formVisible"></i>
-						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!formVisible"></i>
+						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="contact.formVisible"></i>
+						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!contact.formVisible"></i>
 					</div>
 				</a>
 			</h2>
-			<div class="form-contact" data-ng-if="formVisible" class="collapse">
-				<form data-ng-submit="sendComment()" class="form-horizontal" name="contactForm" novalidate>
+			<div class="form-contact" data-ng-if="contact.formVisible" class="collapse">
+				<form data-ng-submit="contact.sendComment()" class="form-horizontal" name="contactForm" novalidate>
 
 					<!-- Name -->
 					<div class="form-group">
-						<label for="name" class="control-label col-md-3">{{dataForm.formName.label}}</label>
+						<label for="name" class="control-label col-md-3">{{contact.dataForm.formName.label}}</label>
 						<div class="col-md-9">
-							<input type="text" name="name" id="name" class="form-control" placeholder="{{dataForm.formName.placeholder}}" data-ng-pattern="dataForm.formName.pattern" pattern="{{dataForm.formName.pattern}}" data-ng-model="data.name" required>
+							<input type="text" name="name" id="name" class="form-control" placeholder="{{contact.dataForm.formName.placeholder}}" data-ng-pattern="contact.dataForm.formName.pattern" pattern="{{contact.dataForm.formName.pattern}}" data-ng-model="contact.data.name" required>
 						</div>
 					</div>
 
 					<!-- Phone Number -->
 					<div class="form-group" data-ng-class="{'has-error' : contactForm.phone.$error.pattern && contactForm.phone.$dirty}">
-						<label for="phone" class="control-label col-md-3">{{dataForm.formPhone.label}}</label>
+						<label for="phone" class="control-label col-md-3">{{contact.dataForm.formPhone.label}}</label>
 						<div class="col-md-9">
-							<input type="text" name="phone" id="phone" class="form-control" placeholder="{{dataForm.formPhone.placeholder}}" data-ng-pattern="dataForm.formPhone.pattern" pattern="{{dataForm.formPhone.pattern}}" data-ng-model="data.phone" required>
+							<input type="text" name="phone" id="phone" class="form-control" placeholder="{{contact.dataForm.formPhone.placeholder}}" data-ng-pattern="contact.dataForm.formPhone.pattern" pattern="{{contact.dataForm.formPhone.pattern}}" data-ng-model="contact.data.phone" required>
 							<div role="alert">
 								<p class="error" data-ng-show = "contactForm.phone.$error.pattern && contactForm.phone.$dirty">
-									{{dataForm.formPhone.errorText}}
+									{{contact.dataForm.formPhone.errorText}}
 								</p>
 							</div>
 						</div>
@@ -50,36 +50,36 @@
 
 					<!-- Email -->
 					<div class="form-group" data-ng-class="{'has-error' : contactForm.email.$invalid && contactForm.email.$dirty}">
-						<label for="email" class="col-md-3 control-label">{{dataForm.formEmail.label}}</label>
+						<label for="email" class="col-md-3 control-label">{{contact.dataForm.formEmail.label}}</label>
 						<div class="col-md-9">
-							<input type="email" id="email" name="email" class="form-control" placeholder="{{dataForm.formEmail.placeholder}}" data-ng-model="data.email" required>
+							<input type="email" id="email" name="email" class="form-control" placeholder="{{contact.dataForm.formEmail.placeholder}}" data-ng-model="contact.data.email" required>
 							<div role="alert">
 								<p class="error" data-ng-show = "contactForm.email.$invalid && contactForm.email.$dirty">
-									{{dataForm.formEmail.errorText}}
+									{{contact.dataForm.formEmail.errorText}}
 								</p>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="comment" class="col-md-3 control-label">{{dataForm.formRating.label}}</label>
+						<label for="comment" class="col-md-3 control-label">{{contact.dataForm.formRating.label}}</label>
 						<div class="col-md-9">
-							<div data-dando-rating data-rating-value="rating.rate" data-max="rating.max"></div>
+							<div data-dando-rating data-rating-value="contact.rating.rate" data-max="contact.rating.max"></div>
 						</div>
 					</div>
 
 					<!-- Comment -->
 					<div class="form-group">
-						<label for="comment" class="col-md-3 control-label">{{dataForm.formComment.label}}</label>
+						<label for="comment" class="col-md-3 control-label">{{contact.dataForm.formComment.label}}</label>
 						<div class="col-md-9">
-							<textarea id="comment" name="comment" class="form-control" placeholder="{{dataForm.formComment.placeholder}}" data-ng-model="data.comment" required></textarea>
+							<textarea id="comment" name="comment" class="form-control" placeholder="{{contact.dataForm.formComment.placeholder}}" data-ng-model="contact.data.comment" required></textarea>
 						</div>
 					</div>
 
 					<!-- Actions Buttons -->
 					<div class="form-group">
 						<div class="col-xs-12">
-							<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="contactForm.$invalid">{{dataForm.actionSend}}</button>
+							<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="contactForm.$invalid">{{contact.dataForm.actionSend}}</button>
 						</div>
 					</div>
 				</form>
@@ -87,23 +87,23 @@
 		</div>
 		<div class="col-md-12">
 			<h2>
-				<a data-ng-click="toggleComments()" class="display-panel">
-					<div class="titleform" data-ng-if="!commentsVisible">
-						{{dataForm.commentTitleShow}}
+				<a data-ng-click="contact.toggleComments()" class="display-panel">
+					<div class="titleform" data-ng-if="!contact.commentsVisible">
+						{{contact.dataForm.commentTitleShow}}
 					</div>
-					<div class="titleform" data-ng-if="commentsVisible">
-						{{dataForm.commentTitleHide}}
+					<div class="titleform" data-ng-if="contact.commentsVisible">
+						{{contact.dataForm.commentTitleHide}}
 					</div>
 					<div class="collapse-state">
-						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="commentsVisible"></i>
-						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!commentsVisible"></i>
+						<i class="fa fa-chevron-up" aria-hidden="true" data-ng-if="contact.commentsVisible"></i>
+						<i class="fa fa-chevron-down" aria-hidden="true" data-ng-if="!contact.commentsVisible"></i>
 					</div>
 				</a>
 			</h2>
 			<!-- Comments service -->
-			<div class="comments" data-ng-if="commentsVisible">
+			<div class="comments" data-ng-if="contact.commentsVisible">
 				<ul class="listComments row">
-					<li data-ng-repeat="comment in comments track by $index" class="col-md-6">
+					<li data-ng-repeat="comment in contact.comments track by $index" class="col-md-6">
 						<div class="comment-container">
 							<div class="row">
 								<div class="col-sm-5 comment-author">

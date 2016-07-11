@@ -11,6 +11,6 @@ angular.module('yoomanApp')
     return {
       templateUrl: 'views/language.html',
       restrict: 'E',
-      controller: 'LanguageCtrl'
+      controller: 'LanguageCtrl as lang'
     };
   });
