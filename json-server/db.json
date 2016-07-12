@@ -33,6 +33,10 @@
       ]
     },
     {
+      "id": "about",
+      "title": "Componente generado con AngularJS 1.5.x"
+    },
+    {
       "id": "home",
       "gretting": "Siempre es un placer comenzar tus aplicaciones",
       "state": "¡Perfecto!",
@@ -113,6 +117,10 @@
           "id": "EN"
         }
       ]
+    },
+    {
+      "id": "about",
+      "title": "Component generated from AngularJS 1.5.x"
     },
     {
       "id": "home",

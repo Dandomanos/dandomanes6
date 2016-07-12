@@ -50,6 +50,10 @@
       return this.resource(this.baseURL + this.root.language + "/home", null, {'update': {method:'PUT'}});
     }
 
+  getAbout() {
+      return this.resource(this.baseURL + this.root.language + "/about", null, {'update': {method:'PUT'}});
+    }
+
 
  }
  DATA.$inject = ['$resource', 'baseURL', '$rootScope', '$cookieStore'];
